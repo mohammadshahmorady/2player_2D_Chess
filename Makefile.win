@@ -1,0 +1,28 @@
+# Project: Project1
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = Chess.o
+LINKOBJ  = Chess.o
+LIBS     = -L"D:/Dev-C++/MinGW64/lib32" -L"D:/Dev-C++/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -L"D:/SDL2-2.0.5/i686-w64-mingw32/lib" -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -m32 -pg
+INCS     = -I"D:/Dev-C++/MinGW64/include" -I"D:/Dev-C++/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-C++/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/SDL2-2.0.5/i686-w64-mingw32/include/SDL2"
+CXXINCS  = -I"D:/Dev-C++/MinGW64/include" -I"D:/Dev-C++/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-C++/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Dev-C++/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"D:/SDL2-2.0.5/i686-w64-mingw32/include/SDL2"
+BIN      = Chess.exe
+CXXFLAGS = $(CXXINCS) -m32 -pg
+CFLAGS   = $(INCS) -m32 -pg
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+Chess.o: Chess.cpp
+	$(CPP) -c Chess.cpp -o Chess.o $(CXXFLAGS)
